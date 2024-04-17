@@ -2,6 +2,7 @@
     app.modals.{{Master_Detail_Child_Prefix_Here}}CreateOrEdit{{Entity_Name_Here}}Modal = function () {
 
         var _{{entity_Name_Plural_Here}}Service = abp.services.app.{{entity_Name_Plural_Here}};
+        var _localization = abp.localization;
 
         var _modalManager;
         var _${{entity_Name_Here}}InformationForm = null;
@@ -10,6 +11,9 @@
 		{{File_Uploading_Init_Here}}
 		{{File_Property_Init_Here}}
 
+        let data = window.translationsData || [];
+        const defaultLanguage = _localization.languages.find(x => x.isDefault).name;
+        
         this.init = function (modalManager) {
             _modalManager = modalManager;
 
@@ -23,6 +27,9 @@
             {{NP_SELECT2_INIT_HERE}}
 
             _${{entity_Name_Here}}InformationForm = _modalManager.getModal().find('form[name={{Entity_Name_Here}}InformationsForm]');
+
+            {{Handle_Multi_Lingual_Here}}
+
             _${{entity_Name_Here}}InformationForm.validate();
         };
 
@@ -36,6 +43,8 @@
             {{Check_If_Uploading_Before_Save_Here}}
 
             var {{entity_Name_Here}} = _${{entity_Name_Here}}InformationForm.serializeFormToObject();
+
+            {{Multi_Lingual_To_Save_Here}}
             
             {{Set_File_Prop_Token_To_Save_Here}}
             
@@ -51,6 +60,8 @@
                _modalManager.setBusy(false);
 			});
         };
+
+        {{Multi_Lingual_Functions_Here}}
         
         {{File_Prop_Functions_Here}}
     };

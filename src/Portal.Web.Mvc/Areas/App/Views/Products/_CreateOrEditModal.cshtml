@@ -1,0 +1,115 @@
+﻿
+@using System.Globalization
+@using Portal.Web.Areas.App.Models.Common.Modals
+@using Portal.Web.Areas.App.Models.Products
+@model CreateOrEditProductModalViewModel
+@using Abp.Extensions
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(Model.IsEditMode ? (L("EditProduct")) : L("CreateNewProduct")))
+
+<div class="modal-body">
+    <div id="ProductInformationsTab">
+        <form name="ProductInformationsForm" role="form" novalidate class="form-validation">
+
+            @if (Model.IsEditMode)
+            {
+            <input type="hidden" name="id" value="@Model.Product.Id" />
+            }
+
+            <div class="my-3">
+                <label class="form-label" for="Product_ProductName">@L("ProductName")</label>
+                <input class="form-control" id="Product_ProductName" value="@Model.Product.ProductName" type="text" name="productName" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="Product_ShortDescription">@L("ShortDescription")</label>
+                <input class="form-control" id="Product_ShortDescription" value="@Model.Product.ShortDescription" type="text" name="shortDescription" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="Product_FullDescription">@L("FullDescription")</label>
+                <input class="form-control" id="Product_FullDescription" value="@Model.Product.FullDescription" type="text" name="fullDescription" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="Product_ProductTemplateId">@L("ProductTemplateId")</label>
+                <input class="form-control m-input" id="Product_ProductTemplateId" value="@Model.Product.ProductTemplateId.ToString(CultureInfo.InvariantCulture)" type="number" name="productTemplateId" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="Product_VendorId">@L("VendorId")</label>
+                <input class="form-control m-input" id="Product_VendorId" value="@Model.Product.VendorId.ToString(CultureInfo.InvariantCulture)" type="number" name="vendorId" />
+            </div>
+
+            <label class="form-check form-check-custom">
+                <input id="Product_ShowOnHomepage" name="showOnHomepage" type="checkbox" class="form-check-input" value="true" @Html.Raw(Model.Product.ShowOnHomepage ?"checked=\"checked\"":"") />
+                <span class="form-check-label">
+                    @L("ShowOnHomepage")
+                </span>
+            </label>
+
+            <div class="my-3">
+                <label class="form-label" for="Product_MetaKeywords">@L("MetaKeywords")</label>
+                <input class="form-control" id="Product_MetaKeywords" value="@Model.Product.MetaKeywords" type="text" name="metaKeywords" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="Product_MetaDescription">@L("MetaDescription")</label>
+                <input class="form-control" id="Product_MetaDescription" value="@Model.Product.MetaDescription" type="text" name="metaDescription" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="Product_MetaTitle">@L("MetaTitle")</label>
+                <input class="form-control" id="Product_MetaTitle" value="@Model.Product.MetaTitle" type="text" name="metaTitle" />
+            </div>
+
+            <label class="form-check form-check-custom">
+                <input id="Product_AllowCustomerReviews" name="allowCustomerReviews" type="checkbox" class="form-check-input" value="true" @Html.Raw(Model.Product.AllowCustomerReviews ?"checked=\"checked\"":"") />
+                <span class="form-check-label">
+                    @L("AllowCustomerReviews")
+                </span>
+            </label>
+
+            <div class="my-3">
+                <label class="form-label" for="Product_Sku">@L("Sku")</label>
+                <input class="form-control" id="Product_Sku" value="@Model.Product.Sku" type="text" name="sku" />
+            </div>
+
+            <label class="form-check form-check-custom">
+                <input id="Product_IsGiftCard" name="isGiftCard" type="checkbox" class="form-check-input" value="true" @Html.Raw(Model.Product.IsGiftCard ?"checked=\"checked\"":"") />
+                <span class="form-check-label">
+                    @L("IsGiftCard")
+                </span>
+            </label>
+
+            <div class="my-3">
+                <label class="form-label" for="Product_GiftCardTypeId">@L("GiftCardTypeId")</label>
+                <input class="form-control" id="Product_GiftCardTypeId" value="@Model.Product.GiftCardTypeId" type="text" name="giftCardTypeId" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="Product_WarehouseId">@L("WarehouseId")</label>
+                <input class="form-control m-input" id="Product_WarehouseId" value="@Model.Product.WarehouseId.ToString(CultureInfo.InvariantCulture)" type="number" name="warehouseId" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="Product_CreatedOnUtc">@L("CreatedOnUtc")</label>
+                <input class="form-control m-input date-picker" id="Product_CreatedOnUtc" type="text" name="createdOnUtc" value="@Model.Product.CreatedOnUtc" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="Product_UpdatedOnUtc">@L("UpdatedOnUtc")</label>
+                <input class="form-control m-input date-picker" id="Product_UpdatedOnUtc" type="text" name="updatedOnUtc" value="@Model.Product.UpdatedOnUtc" />
+            </div>
+
+            <label class="form-check form-check-custom">
+                <input id="Product_Deleted" name="deleted" type="checkbox" class="form-check-input" value="true" @Html.Raw(Model.Product.Deleted ?"checked=\"checked\"":"") />
+                <span class="form-check-label">
+                    @L("Deleted")
+                </span>
+            </label>
+
+        </form>
+    </div>
+</div>
+
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalFooterWithSaveAndCancel.cshtml")

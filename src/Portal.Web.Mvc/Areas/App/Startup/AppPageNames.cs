@@ -4,6 +4,8 @@
     {
         public static class Common
         {
+            public const string Products = "ProductNamespeace.Products";
+            public const string TestEntities = "TestEntityNamespeace.TestEntities";
             public const string Administration = "Administration";
             public const string Roles = "Administration.Roles";
             public const string Users = "Administration.Users";

@@ -3,6 +3,7 @@ using Abp.Domain.Repositories;{{Excel_Using_Statement_Here}}
 using {{Namespace_Here}}.Authorization;
 using Abp.Authorization;
 using {{Namespace_Here}}.Storage;
+using System;
 
 namespace {{Namespace_Here}}.{{Namespace_Relative_Full_Here}}
 {

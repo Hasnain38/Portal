@@ -226,6 +226,74 @@
             "
 		},
 		{
+			"placeholder": "{{Get_Excel_Operations_Button_Here}}",
+			"condition": "{{Create_Excel_Import_Here}} == true && {{Create_Excel_Export_Here}} == true",
+			"content": "
+				    <div class=\"btn-group\">
+						<button type=\"button\" class=\"btn btn-outline btn-outline-success btn-active-light-success dropdown-toggle me-1\" data-bs-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
+							<i class=\"far fa-file-excel btn-md-icon\"></i>
+							<span class=\"d-none d-md-inline-block mb-md-0\">
+								@L(\"ExcelOperations\")
+							</span>
+						</button>
+						<div class=\"dropdown-menu dropdown-menu-right\">
+							<a class=\"dropdown-item\" id=\"ExportToExcelButton\" href=\"#\"> @L(\"ExportToExcel\")</a>
+							@if (IsGranted(AppPermissions.{{Permission_Name_Here}}_Create))
+							{
+								<a class=\"dropdown-item\" href=\"#\">
+									<span class=\"fileinput-button align-items-start justify-content-start\">
+										<span>@L(\"ImportFromExcel\")</span>
+											<input id=\"ImportToExcelButton\" type=\"file\" name=\"files\" accept=\".xlsx, .xls, .csv\">
+									</span>
+								</a>
+							}
+						</div>
+					</div>
+			"
+		},
+		{
+			"placeholder": "{{Get_Excel_Operations_Button_Here}}",
+			"condition": "{{Create_Excel_Import_Here}} == true",
+			"content": "
+				    <div class=\"btn-group\">
+						<button type=\"button\" class=\"btn btn-outline btn-outline-success btn-active-light-success dropdown-toggle me-1\" data-bs-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
+							<i class=\"far fa-file-excel btn-md-icon\"></i>
+							<span class=\"d-none d-md-inline-block mb-md-0\">
+								@L(\"ExcelOperations\")
+							</span>
+						</button>
+						<div class=\"dropdown-menu dropdown-menu-right\">
+							@if (IsGranted(AppPermissions.{{Permission_Name_Here}}_Create))
+							{
+								<a class=\"dropdown-item\" href=\"#\">
+									<span class=\"fileinput-button align-items-start justify-content-start\">
+										<span>@L(\"ImportFromExcel\")</span>
+											<input id=\"ImportToExcelButton\" type=\"file\" name=\"files\" accept=\".xlsx, .xls, .csv\">
+									</span>
+								</a>
+							}
+						</div>
+					</div>
+			"
+		},
+		{
+			"placeholder": "{{Get_Excel_Operations_Button_Here}}",
+			"condition": "{{Create_Excel_Export_Here}} == true",
+			"content": "
+				    <div class=\"btn-group\">
+						<button type=\"button\" class=\"btn btn-outline btn-outline-success btn-active-light-success dropdown-toggle me-1\" data-bs-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
+							<i class=\"far fa-file-excel btn-md-icon\"></i>
+							<span class=\"d-none d-md-inline-block mb-md-0\">
+								@L(\"ExcelOperations\")
+							</span>
+						</button>
+						<div class=\"dropdown-menu dropdown-menu-right\">
+							<a class=\"dropdown-item\" id=\"ExportToExcelButton\" href=\"#\"> @L(\"ExportToExcel\")</a>
+						</div>
+					</div>
+			"
+		},
+		{
 			"placeholder": "{{Container_Class_Here}}",
 			"condition": "{{Project_Version_Here}} < 070200",
 			"content": "kt-content"
@@ -307,11 +375,11 @@
             "condition": "{{Project_Version_Here}} >= 090000",
             "content": "
                 <abp-page-subheader title='@L(\"{{Entity_Name_Plural_Here}}\")' description='@L(\"{{Entity_Name_Plural_Here}}HeaderInfo\")'>
-                     {{Get_Excel_Button_Here}}
-                     @if (IsGranted(AppPermissions.{{Permission_Name_Here}}_Create))
-                     {
-                         {{Create_Button_Here}}                
-                     }
+					{{Get_Excel_Operations_Button_Here}}
+					@if (IsGranted(AppPermissions.{{Permission_Name_Here}}_Create))
+					{
+						{{Create_Button_Here}}                
+					}
                 </abp-page-subheader>
             "
         },

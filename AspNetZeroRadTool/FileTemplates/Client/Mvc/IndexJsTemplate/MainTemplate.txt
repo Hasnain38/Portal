@@ -161,7 +161,9 @@
 
         {{Create_Button_Here}}        
 
-		{{Get_Excel_Method_Here}}
+		{{Get_Excel_Export_Method_Here}}
+		
+        {{Get_Excel_Import_Method_Here}}
 
         abp.event.on('app.createOrEdit{{Entity_Name_Here}}ModalSaved', function () {
             get{{Entity_Name_Plural_Here}}();

@@ -1,3 +1,7 @@
+﻿using Portal.ProductNamespeace.Dtos;
+using Portal.ProductNamespeace;
+using Portal.TestEntityNamespeace.Dtos;
+using Portal.TestEntityNamespeace;
 using Abp.Application.Editions;
 using Abp.Application.Features;
 using Abp.Auditing;
@@ -49,6 +53,10 @@ namespace Portal
     {
         public static void CreateMappings(IMapperConfigurationExpression configuration)
         {
+            configuration.CreateMap<CreateOrEditProductDto, Product>().ReverseMap();
+            configuration.CreateMap<ProductDto, Product>().ReverseMap();
+            configuration.CreateMap<CreateOrEditTestEntityDto, TestEntity>().ReverseMap();
+            configuration.CreateMap<TestEntityDto, TestEntity>().ReverseMap();
             //Inputs
             configuration.CreateMap<CheckboxInputType, FeatureInputTypeDto>();
             configuration.CreateMap<SingleLineStringInputType, FeatureInputTypeDto>();
@@ -77,8 +85,6 @@ namespace Portal
             configuration.CreateMap<Role, RoleListDto>();
             configuration.CreateMap<UserRole, UserListRoleDto>();
 
-            
-
             //Edition
             configuration.CreateMap<EditionEditDto, SubscribableEdition>().ReverseMap();
             configuration.CreateMap<EditionCreateDto, SubscribableEdition>();
@@ -92,11 +98,10 @@ namespace Portal
             configuration.CreateMap<Edition, SubscribableEdition>();
             configuration.CreateMap<Edition, EditionSelectDto>();
 
-
             //Payment
             configuration.CreateMap<SubscriptionPaymentDto, SubscriptionPayment>()
                 .ReverseMap()
-                .ForMember(dto=> dto.TotalAmount, options=> options.MapFrom(e=> e.GetTotalAmount()));
+                .ForMember(dto => dto.TotalAmount, options => options.MapFrom(e => e.GetTotalAmount()));
             configuration.CreateMap<SubscriptionPaymentProductDto, SubscriptionPaymentProduct>().ReverseMap();
             configuration.CreateMap<SubscriptionPaymentListDto, SubscriptionPayment>().ReverseMap();
             configuration.CreateMap<SubscriptionPayment, SubscriptionPaymentInfoDto>();
@@ -165,7 +170,7 @@ namespace Portal
             configuration.CreateMap<DynamicEntityPropertyDto, DynamicEntityProperty>();
 
             configuration.CreateMap<DynamicEntityPropertyValue, DynamicEntityPropertyValueDto>().ReverseMap();
-            
+
             //User Delegations
             configuration.CreateMap<CreateUserDelegationDto, UserDelegation>();
 

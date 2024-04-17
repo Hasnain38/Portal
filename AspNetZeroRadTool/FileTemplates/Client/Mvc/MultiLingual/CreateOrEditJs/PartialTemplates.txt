@@ -243,10 +243,10 @@
 	        "placeholder" : "{{Handle_Multi_Lingual_Here}}",
 	        "condition": "{{Is_Multi_Lingual_Entity}} == true",
 	        "content" : "       
-            handleMultiLingualFields(_localization.currentLanguage.name);
+            handleMultiLingualFields(defaultLanguage);
 
             $('#languageCheckbox').change(function () {
-                if (this.value === _localization.currentLanguage.name) {
+                if (this.value === defaultLanguage) {
                     showDefaultFields();
                 } else {
                     showSelectedLanguageFields(this.value);
@@ -288,7 +288,7 @@
 						}
 					});
 
-					handleMultiLingualFields(_localization.currentLanguage.name);
+					handleMultiLingualFields(defaultLanguage);
 				}
 
 				function showSelectedLanguageFields(languageName) {
@@ -316,7 +316,7 @@
 						});
 
 						const defaultInput = data.find((item) => {
-							return item.language === _localization.currentLanguage.name;
+							return item.language === defaultLanguage;
 						});
 
 						if (dataInput && dataInput.hasOwnProperty(input.attr('name'))) {

@@ -14,6 +14,7 @@ import { FileDownloadService } from '@shared/utils/file-download.service';{{Enti
 {{Import_Lodash_Filter_Here}}
 {{Import_Datetime_Here}}
 {{Import_DateTime_Service_Here}}
+{{Excel_Import_Imports_Here}}
 
 @Component({
     templateUrl: './{{entity_Name_Plural_Here}}.component.html',
@@ -27,6 +28,7 @@ export class {{Entity_Name_Plural_Here}}Component extends AppComponentBase {
     
     @ViewChild('dataTable', { static: true }) dataTable: {{DataTable_Dec_Here}}Table;
     @ViewChild('paginator', { static: true }) paginator: Paginator;
+    {{Excel_Import_ViewChild_Here}}
 
     advancedFiltersAreShown = false;
     filterText = '';
@@ -35,6 +37,7 @@ export class {{Entity_Name_Plural_Here}}Component extends AppComponentBase {
 {{EntityHistory_Decs_Here}}
 {{Master_Detail_Table_Row_Selection_Here}}
 {{Master_Detail_Table_Edit_Selection_Here}}
+{{Excel_Import_Properties_Here}}
 
     constructor(
         injector: Injector,
@@ -42,9 +45,10 @@ export class {{Entity_Name_Plural_Here}}Component extends AppComponentBase {
         private _notifyService: NotifyService,
         private _tokenAuth: TokenAuthServiceProxy,
         private _activatedRoute: ActivatedRoute,
-        private _fileDownloadService: FileDownloadService{{Router_Field_Here}}{{Get_DateTime_Service_Here}}
+        private _fileDownloadService: FileDownloadService{{Router_Field_Here}}{{Get_DateTime_Service_Here}}{{Excel_Import_Constructor_Here}}
     ) {
         super(injector);
+        {{Excel_Import_Set_UploadUrl_Here}}
     }
 {{SetentityHistoryEnabled_Here}}
     get{{Entity_Name_Plural_Here}}(event?: LazyLoadEvent) {
@@ -94,6 +98,8 @@ export class {{Entity_Name_Plural_Here}}Component extends AppComponentBase {
             }
         );
     }{{Get_Excel_Method_Here}}
+    
+    {{Get_Excel_Import_Method_Here}}
     
     {{Master_Detail_Table_Select_Edit_Table_Here}}
     {{Master_Detail_Table_Row_Opener_Here}}

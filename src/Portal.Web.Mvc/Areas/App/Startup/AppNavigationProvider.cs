@@ -21,6 +21,22 @@ namespace Portal.Web.Areas.App.Startup
                         icon: "flaticon-line-graph",
                         permissionDependency: new SimplePermissionDependency(AppPermissions.Pages_Administration_Host_Dashboard)
                     )
+                )
+                .AddItem(new MenuItemDefinition(
+                        AppPageNames.Common.Products,
+                        L("Products"),
+                        url: "App/Products",
+                        icon: "flaticon-more",
+                        permissionDependency: new SimplePermissionDependency(AppPermissions.Pages_Products)
+                    )
+                )
+                .AddItem(new MenuItemDefinition(
+                        AppPageNames.Common.TestEntities,
+                        L("TestEntities"),
+                        url: "App/TestEntities",
+                        icon: "flaticon-more",
+                        permissionDependency: new SimplePermissionDependency(AppPermissions.Pages_TestEntities)
+                    )
                 ).AddItem(new MenuItemDefinition(
                         AppPageNames.Host.Tenants,
                         L("Tenants"),

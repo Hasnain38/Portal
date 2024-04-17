@@ -1,0 +1,86 @@
+﻿
+@using Portal.Web.Areas.App.Models.Common.Modals
+@using Portal.Web.Areas.App.Models.Products
+@model ProductViewModel
+
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("Details")))
+
+<div class="modal-body">
+    <div id="ProductInformationsTab">
+
+        <div class="row">
+            <div class="col-6 mb-3">
+                <h6>@L("ProductName") :</h6>
+                @Model.Product.ProductName
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("ShortDescription") :</h6>
+                @Model.Product.ShortDescription
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("FullDescription") :</h6>
+                @Model.Product.FullDescription
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("ProductTemplateId") :</h6>
+                @Model.Product.ProductTemplateId
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("VendorId") :</h6>
+                @Model.Product.VendorId
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("ShowOnHomepage") :</h6>
+                @Model.Product.ShowOnHomepage
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("MetaKeywords") :</h6>
+                @Model.Product.MetaKeywords
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("MetaDescription") :</h6>
+                @Model.Product.MetaDescription
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("MetaTitle") :</h6>
+                @Model.Product.MetaTitle
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("AllowCustomerReviews") :</h6>
+                @Model.Product.AllowCustomerReviews
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("Sku") :</h6>
+                @Model.Product.Sku
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("IsGiftCard") :</h6>
+                @Model.Product.IsGiftCard
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("GiftCardTypeId") :</h6>
+                @Model.Product.GiftCardTypeId
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("WarehouseId") :</h6>
+                @Model.Product.WarehouseId
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("CreatedOnUtc") :</h6>
+                @Model.Product.CreatedOnUtc
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("UpdatedOnUtc") :</h6>
+                @Model.Product.UpdatedOnUtc
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("Deleted") :</h6>
+                @Model.Product.Deleted
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalFooterWithClose.cshtml")

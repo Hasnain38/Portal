@@ -328,6 +328,152 @@
                 "
 		},
 		{
+            "placeholder": "{{Get_Excel_Operations_Here}}",
+            "condition": "{{Create_Excel_Export_Here}} == true && {{Create_Excel_Import_Here}} == true",
+            "content": "<div class=\"btn-group\" dropdown placement=\"button right\">
+                            <button
+                                id=\"dropdownButtonExcelOperations\"
+                                dropdownToggle
+                                type=\"button\"
+                                class=\"btn btn-outline btn-outline-success btn-active-light-success dropdown-toggle me-1\"
+                                data-toggle=\"dropdown\"
+                                aria-haspopup=\"true\"
+                                aria-expanded=\"false\"
+                                aria-controls=\"dropdownMenuExcelOperations\"
+                            >
+                                <i class=\"far fa-file-excel btn-md-icon\"></i>
+                                <span class=\"d-none d-md-inline-block\">
+                                    {{ 'ExcelOperations' | localize }}
+                                </span>
+                            </button>
+                            <ul
+                                id=\"dropdownMenuExcelOperations\"
+                                class=\"dropdown-menu dropdown-menu-right dropdown-excel-operations\"
+                                role=\"menu\"
+                                *dropdownMenu
+                                aria-labelledby=\"dropdownButtonExcelOperations\"
+                            >
+                                <li role=\"menuitem\">
+                                    <a
+                                        class=\"dropdown-item text-dark\"
+                                        id=\"Export{{Entity_Name_Plural_Here}}ToExcelButton\"
+                                        (click)=\"exportToExcel()\"
+                                        href=\"javascript:;\"
+                                    >
+                                        <i class=\"fa fa-download me-2 mt-1 text-dark\" style=\"font-size: 1rem\"></i>
+                                        {{ 'ExportToExcel' | localize }}
+                                    </a>
+                                </li>
+                                <li *ngIf=\"'{{Permission_Value_Here}}.Create' | permission\" role=\"menuitem\">
+                                    <a href=\"javascript:;\" class=\"no-padding\">
+                                        <span class=\"fileinput-button\">
+                                            <p-fileUpload
+                                                customUpload=\"true\"
+                                                name=\"ExcelFileUpload\"
+                                                #ExcelFileUpload
+                                                maxFileSize=\"10000000\"
+                                                auto=\"auto\"
+                                                accept=\".csv,.xls,.xlsx\"
+                                                (uploadHandler)=\"uploadExcel($event)\"
+                                                (onError)=\"onUploadExcelError()\"
+                                                chooseLabel=\"{{ 'ImportFromExcel' | localize }}\"
+                                            ></p-fileUpload>
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+            "
+        },
+        {
+            "placeholder": "{{Get_Excel_Operations_Here}}",
+            "condition": "{{Create_Excel_Export_Here}} == true",
+            "content": "<div class=\"btn-group\" dropdown placement=\"button right\">
+                            <button
+                                id=\"dropdownButtonExcelOperations\"
+                                dropdownToggle
+                                type=\"button\"
+                                class=\"btn btn-outline btn-outline-success btn-active-light-success dropdown-toggle me-1\"
+                                data-toggle=\"dropdown\"
+                                aria-haspopup=\"true\"
+                                aria-expanded=\"false\"
+                                aria-controls=\"dropdownMenuExcelOperations\"
+                            >
+                                <i class=\"far fa-file-excel btn-md-icon\"></i>
+                                <span class=\"d-none d-md-inline-block\">
+                                    {{ 'ExcelOperations' | localize }}
+                                </span>
+                            </button>
+                            <ul
+                                id=\"dropdownMenuExcelOperations\"
+                                class=\"dropdown-menu dropdown-menu-right dropdown-excel-operations\"
+                                role=\"menu\"
+                                *dropdownMenu
+                                aria-labelledby=\"dropdownButtonExcelOperations\"
+                            >
+                                <li role=\"menuitem\">
+                                    <a
+                                        class=\"dropdown-item text-dark\"
+                                        id=\"Export{{Entity_Name_Plural_Here}}ToExcelButton\"
+                                        (click)=\"exportToExcel()\"
+                                        href=\"javascript:;\"
+                                    >
+                                        <i class=\"fa fa-download me-2 mt-1 text-dark\" style=\"font-size: 1rem\"></i>
+                                        {{ 'ExportToExcel' | localize }}
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+            "
+        },
+        {
+            "placeholder": "{{Get_Excel_Operations_Here}}",
+            "condition": "{{Create_Excel_Import_Here}} == true",
+            "content": "<div *ngIf=\"'{{Permission_Value_Here}}.Create' | permission\" class=\"btn-group\" dropdown placement=\"button right\">
+                            <button
+                                id=\"dropdownButtonExcelOperations\"
+                                dropdownToggle
+                                type=\"button\"
+                                class=\"btn btn-outline btn-outline-success btn-active-light-success dropdown-toggle me-1\"
+                                data-toggle=\"dropdown\"
+                                aria-haspopup=\"true\"
+                                aria-expanded=\"false\"
+                                aria-controls=\"dropdownMenuExcelOperations\"
+                            >
+                                <i class=\"far fa-file-excel btn-md-icon\"></i>
+                                <span class=\"d-none d-md-inline-block\">
+                                    {{ 'ExcelOperations' | localize }}
+                                </span>
+                            </button>
+                            <ul
+                                id=\"dropdownMenuExcelOperations\"
+                                class=\"dropdown-menu dropdown-menu-right dropdown-excel-operations\"
+                                role=\"menu\"
+                                *dropdownMenu
+                                aria-labelledby=\"dropdownButtonExcelOperations\"
+                            >
+                                <li role=\"menuitem\">
+                                    <a href=\"javascript:;\" class=\"no-padding\">
+                                        <span class=\"fileinput-button\">
+                                            <p-fileUpload
+                                                customUpload=\"true\"
+                                                name=\"ExcelFileUpload\"
+                                                #ExcelFileUpload
+                                                maxFileSize=\"10000000\"
+                                                auto=\"auto\"
+                                                accept=\".csv,.xls,.xlsx\"
+                                                (uploadHandler)=\"uploadExcel($event)\"
+                                                (onError)=\"onUploadExcelError()\"
+                                                chooseLabel=\"{{ 'ImportFromExcel' | localize }}\"
+                                            ></p-fileUpload>
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+            "
+        },
+		{
 			"placeholder": "{{DateTimePicker_Before_V6}}",
 			"condition": "{{Project_Version_Here}} < 060000",
 			"content": "<input class=\"form-control m-input\" id=\"Min{{Property_Name_Here}}Filter\" type=\"datetime\" datePicker  placeholder=\"{{l('MinValue')}}\" [(selectedDate)]=\"min{{Property_Name_Here}}Filter\">
@@ -460,7 +606,7 @@
             "condition": "{{Project_Version_Here}} >= 090000",
             "content": " <sub-header [title]=\"'{{Entity_Name_Plural_Here}}' | localize\" [description]=\"'{{Entity_Name_Plural_Here}}HeaderInfo' | localize\">
              <div role=\"actions\">
-                 {{Get_Excel_Button_Here}}
+                 {{Get_Excel_Operations_Here}} 
                  <button id=\"btn_create_{{entity_Name_Here}}\" *ngIf=\"isGranted('{{Permission_Value_Here}}.Create')\" (click)=\"create{{Entity_Name_Here}}()\" 
                                         class=\"btn btn-primary blue\"><i class=\"fa fa-plus\"></i> {{l(\"CreateNew{{Entity_Name_Here}}\")}}</button>
              </div>

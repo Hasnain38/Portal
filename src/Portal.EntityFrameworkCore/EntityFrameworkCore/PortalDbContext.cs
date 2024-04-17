@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Portal.ProductNamespeace;
+using Portal.TestEntityNamespeace;
+using System.Collections.Generic;
 using System.Text.Json;
 using Abp.Zero.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -22,16 +24,20 @@ namespace Portal.EntityFrameworkCore
 {
     public class PortalDbContext : AbpZeroDbContext<Tenant, Role, User, PortalDbContext>, IOpenIddictDbContext
     {
+        public virtual DbSet<Product> Products { get; set; }
+
+        public virtual DbSet<TestEntity> TestEntities { get; set; }
+
         /* Define an IDbSet for each entity of the application */
 
         public virtual DbSet<OpenIddictApplication> Applications { get; }
-        
+
         public virtual DbSet<OpenIddictAuthorization> Authorizations { get; }
-        
+
         public virtual DbSet<OpenIddictScope> Scopes { get; }
-        
+
         public virtual DbSet<OpenIddictToken> Tokens { get; }
-        
+
         public virtual DbSet<BinaryObject> BinaryObjects { get; set; }
 
         public virtual DbSet<Friendship> Friendships { get; set; }
@@ -41,7 +47,7 @@ namespace Portal.EntityFrameworkCore
         public virtual DbSet<SubscribableEdition> SubscribableEditions { get; set; }
 
         public virtual DbSet<SubscriptionPayment> SubscriptionPayments { get; set; }
-        
+
         public virtual DbSet<SubscriptionPaymentProduct> SubscriptionPaymentProducts { get; set; }
 
         public virtual DbSet<Invoice> Invoices { get; set; }
@@ -75,7 +81,7 @@ namespace Portal.EntityFrameworkCore
                         })
                     );
             });
-            
+
             modelBuilder.Entity<SubscriptionPaymentProduct>(x =>
             {
                 x.Property(u => u.ExtraProperties)
@@ -124,7 +130,7 @@ namespace Portal.EntityFrameworkCore
                 b.HasIndex(e => new { e.TenantId, e.SourceUserId });
                 b.HasIndex(e => new { e.TenantId, e.TargetUserId });
             });
-            
+
             modelBuilder.ConfigureOpenIddict();
         }
     }

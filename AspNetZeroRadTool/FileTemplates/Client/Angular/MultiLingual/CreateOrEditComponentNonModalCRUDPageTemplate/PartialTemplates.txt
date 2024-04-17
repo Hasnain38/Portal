@@ -582,7 +582,7 @@ this._{{entity_Name_Plural_Here}}ServiceProxy.getAll{{NP_Foreign_Entity_Name_Her
                      initializeUploader(url: string, onSuccess: (fileToken: string) => void): FileUploader {
                          let uploader = new FileUploader({url: url});
                  
-                         let _uploaderOptions: FileUploaderOptions = {};
+                         let _uploaderOptions: FileUploaderOptions = {url: url};
                          _uploaderOptions.autoUpload = false;
                          _uploaderOptions.authToken = 'Bearer ' + this._tokenService.getToken();
                          _uploaderOptions.removeAfterUpload = true;

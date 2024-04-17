@@ -1,0 +1,22 @@
+﻿
+@using Portal.Web.Areas.App.Models.Common.Modals
+@using Portal.Web.Areas.App.Models.TestEntities
+@model TestEntityViewModel
+
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("Details")))
+
+<div class="modal-body">
+    <div id="TestEntityInformationsTab">
+
+        <div class="row">
+            <div class="col-6 mb-3">
+                <h6>@L("TestName") :</h6>
+                @Model.TestEntity.TestName
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalFooterWithClose.cshtml")

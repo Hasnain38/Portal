@@ -12,7 +12,8 @@
 		{{File_Property_Init_Here}}
 
         let data = window.translationsData || [];
-
+        const defaultLanguage = _localization.languages.find(x => x.isDefault).name;
+        
         this.init = function (modalManager) {
             _modalManager = modalManager;
 

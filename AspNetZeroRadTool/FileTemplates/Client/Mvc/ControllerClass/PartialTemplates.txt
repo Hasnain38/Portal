@@ -229,6 +229,69 @@
         }"
 		},
 		{
+            "placeholder": "{{Controller_Base_Here}}",
+            "condition": "{{Create_Excel_Import_Here}} == false",
+            "content": "{{Project_Name_Here}}ControllerBase"
+        },
+        {
+            "placeholder": "{{Controller_Base_Here}}",
+            "condition": "{{Create_Excel_Import_Here}} == true",
+            "content": "ExcelImportControllerBase"
+        },
+        {
+            "placeholder": "{{ExcelImportBase_Prop_Cons_Here}}",
+            "condition": "{{Create_Excel_Import_Here}} == true",
+            "content": ", IBinaryObjectManager binaryObjectManager, IBackgroundJobManager backgroundJobManager"
+        },
+        {
+            "placeholder": "{{ExcelImportBase_Prop_Init_Here}}",
+            "condition": "{{Create_Excel_Import_Here}} == true",
+            "content": "
+                        protected readonly IBinaryObjectManager _binaryObjectManager;
+                        protected readonly IBackgroundJobManager _backgroundJobManager;
+                        "
+        },
+        {
+            "placeholder": "{{ExcelImportBase_Prop_Define_Here}}",
+            "condition": "{{Create_Excel_Import_Here}} == true",
+            "content": "
+                        _binaryObjectManager = binaryObjectManager;
+                        _backgroundJobManager = backgroundJobManager;
+                        "
+        },
+        {
+            "placeholder": "{{Override_ImportExcelPermission_Here}}",
+            "condition": "{{Create_Excel_Import_Here}} == true",
+            "content": "
+                        public override string ImportExcelPermission => AppPermissions.{{Permission_Name_Here}}_Create;
+                        "
+        },
+        {
+            "placeholder": "{{Override_EnqueueExcelImportJobAsync_Here}}",
+            "condition": "{{Create_Excel_Import_Here}} == true",
+            "content": "
+                        public override async Task EnqueueExcelImportJobAsync(ImportFromExcelJobArgs args)
+                        {
+                            await BackgroundJobManager.EnqueueAsync<Import{{Entity_Name_Plural_Here}}ToExcelJob, ImportFromExcelJobArgs>(args);
+                        }
+                        "
+        },
+        {
+            "placeholder": "{{ExcelImport_Props_Usings_Here}}",
+            "condition": "{{Create_Excel_Import_Here}} == true",
+            "content": "
+                        using Abp.BackgroundJobs;
+                        using {{Namespace_Here}}.Storage;
+						using {{Namespace_Here}}.DataImporting.Excel;
+						using {{Namespace_Here}}.Web.Controllers;
+                        "
+        },
+		{
+            "placeholder": "{{Initialize_Base_Here}}",
+            "condition": "{{Create_Excel_Import_Here}} == true",
+            "content": " : base(binaryObjectManager, backgroundJobManager)"
+        },
+		{
 			"placeholder": "{{View_Method_Here}}",
 			"condition": "{{Create_View_Only_Here}} == true && {{Is_Non_Modal_CRUD_Page}} == true",
 			"content": "

@@ -144,7 +144,7 @@
                         },"
 		},
 		{
-			"placeholder": "{{Get_Excel_Method_Here}}",
+			"placeholder": "{{Get_Excel_Export_Method_Here}}",
 			"condition": "{{Create_Excel_Export_Here}} == true",
 			"content": "$('#ExportToExcelButton').click(function () {
             _{{entity_Name_Plural_Here}}Service
@@ -155,6 +155,30 @@
                     app.downloadTempFile(result);
                 });
         });"
+		},
+		{
+			"placeholder": "{{Get_Excel_Import_Method_Here}}",
+			"condition": "{{Create_Excel_Import_Here}} == true",
+			"content": 
+				"    $('#ImportToExcelButton')
+						.fileupload({
+							url: abp.appPath + '{{App_Area_Name_Here}}/{{Entity_Name_Plural_Here}}/ImportFromExcel',
+							dataType: 'json',
+							maxFileSize: 1048576 * 100,
+							dropZone: $('#{{Entity_Name_Plural_Here}}Table'),
+							done: function (e, response) {
+							var jsonResult = response.result;
+							if (jsonResult.success) {
+								abp.notify.info(app.localize('Import{{Entity_Name_Plural_Here}}ProcessStart'));
+							} else {
+								abp.notify.warn(app.localize('Import{{Entity_Name_Plural_Here}}UploadFailed'));
+							}
+							},
+						})
+						.prop('disabled', !$.support.fileInput)
+						.parent()
+						.addClass($.support.fileInput ? undefined : 'disabled');
+	  		   "
 		},
 		{
 			"placeholder": "{{EntityTypeFullName_Dec_Here}}",

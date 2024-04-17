@@ -8,7 +8,7 @@
 @using Newtonsoft.Json.Serialization
 
 @{
-    var modalTitle = Model.IsEditMode ? (L("EditMultiLingualEntity")) : L("CreateNewMultiLingualEntity");
+    var modalTitle = Model.IsEditMode ? (L("Edit{{Entity_Name_Here}}")) : L("CreateNew{{Entity_Name_Here}}");
 }
 
 <div class="modal-header">

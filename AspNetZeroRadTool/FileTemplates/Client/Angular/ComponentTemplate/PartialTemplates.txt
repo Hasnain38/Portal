@@ -265,6 +265,62 @@ import { View{{Entity_Name_Here}}ModalComponent } from './view-{{entity_Name_Her
          });
     }"
 		},
+        {
+            "placeholder": "{{Get_Excel_Import_Method_Here}}",
+            "condition": "{{Create_Excel_Import_Here}} == true",
+            "content": "
+                    uploadExcel(data: { files: File }): void {
+                        const formData: FormData = new FormData();
+                        const file = data.files[0];
+                        formData.append('file', file, file.name);
+                
+                        this._httpClient
+                            .post<any>(this.uploadUrl, formData)
+                            .pipe(finalize(() => this.excelFileUpload.clear()))
+                            .subscribe((response) => {
+                                if (response.success) {
+                                    this.notify.success(this.l('Import{{Entity_Name_Plural_Here}}ProcessStart'));
+                                } else if (response.error != null) {
+                                    this.notify.error(this.l('Import{{Entity_Name_Plural_Here}}UploadFailed'));
+                                }
+                            });
+                    }
+                
+                    onUploadExcelError(): void {
+                        this.notify.error(this.l('Import{{Entity_Name_Plural_Here}}UploadFailed'));
+                    }
+            "
+        },
+        {
+            "placeholder": "{{Excel_Import_Imports_Here}}",
+            "condition": "{{Create_Excel_Import_Here}} == true",
+            "content": "
+                    import { HttpClient } from '@angular/common/http';
+                    import { FileUpload } from 'primeng/fileupload';
+                    import { finalize } from 'rxjs';
+            "
+        },
+        {
+            "placeholder": "{{Excel_Import_Properties_Here}}",
+            "condition": "{{Create_Excel_Import_Here}} == true",
+            "content": "
+                    uploadUrl: string;
+            "
+        },
+        {
+            "placeholder": "{{Excel_Import_ViewChild_Here}}",
+            "condition": "{{Create_Excel_Import_Here}} == true",
+            "content": "
+                    @ViewChild('ExcelFileUpload', { static: false }) excelFileUpload: FileUpload;
+            "
+        },
+        {
+            "placeholder": "{{Excel_Import_Set_UploadUrl_Here}}",
+            "condition": "{{Create_Excel_Import_Here}} == true",
+            "content": "
+                    this.uploadUrl = AppConsts.remoteServiceBaseUrl + '/{{Entity_Name_Plural_Here}}/ImportFromExcel';
+            "
+        },
 		{
 			"placeholder": "{{PrimeNG_Imports_Here}}",
 			"condition": "{{Project_Version_Here}} < 080500",
@@ -340,6 +396,12 @@ import { LazyLoadEvent } from 'primeng/api';"
              "condition": "{{Project_Version_Here}} >= 100000",
              "content" : ",
              private _dateTimeService: DateTimeService"
+        },        
+        {
+             "placeholder" : "{{Excel_Import_Constructor_Here}}",
+             "condition": "{{Create_Excel_Import_Here}} == true",
+             "content" : ",
+             private _httpClient: HttpClient"
         },
         {
              "placeholder" : "{{Get_Date_Here}}",
