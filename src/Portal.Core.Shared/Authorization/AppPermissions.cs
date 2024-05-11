@@ -6,6 +6,16 @@
     /// </summary>
     public static class AppPermissions
     {
+        public const string Pages_SystemDataDefinitions = "Pages.SystemDataDefinitions";
+        public const string Pages_SystemDataDefinitions_Create = "Pages.SystemDataDefinitions.Create";
+        public const string Pages_SystemDataDefinitions_Edit = "Pages.SystemDataDefinitions.Edit";
+        public const string Pages_SystemDataDefinitions_Delete = "Pages.SystemDataDefinitions.Delete";
+
+        public const string Pages_System_DataDefinitionTypes = "Pages.System_DataDefinitionTypes";
+        public const string Pages_System_DataDefinitionTypes_Create = "Pages.System_DataDefinitionTypes.Create";
+        public const string Pages_System_DataDefinitionTypes_Edit = "Pages.System_DataDefinitionTypes.Edit";
+        public const string Pages_System_DataDefinitionTypes_Delete = "Pages.System_DataDefinitionTypes.Delete";
+
         public const string Pages_OrderItems = "Pages.OrderItems";
         public const string Pages_OrderItems_Create = "Pages.OrderItems.Create";
         public const string Pages_OrderItems_Edit = "Pages.OrderItems.Edit";

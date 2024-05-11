@@ -1,0 +1,37 @@
+﻿
+@using System.Globalization
+@using Portal.Web.Areas.App.Models.Common.Modals
+@using Portal.Web.Areas.App.Models.System_DataDefinitionTypes
+@model CreateOrEditSystem_DataDefinitionTypeModalViewModel
+@using Abp.Extensions
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(Model.IsEditMode ? (L("EditSystem_DataDefinitionType")) : L("CreateNewSystem_DataDefinitionType")))
+
+<div class="modal-body">
+    <div id="System_DataDefinitionTypeInformationsTab">
+        <form name="System_DataDefinitionTypeInformationsForm" role="form" novalidate class="form-validation">
+
+            @if (Model.IsEditMode)
+            {
+            <input type="hidden" name="id" value="@Model.System_DataDefinitionType.Id" />
+            }
+
+            <div class="my-3">
+                <label class="form-label" for="System_DataDefinitionType_DefTypeValue">@L("DefTypeValue")</label>
+                <input class="form-control" id="System_DataDefinitionType_DefTypeValue" value="@Model.System_DataDefinitionType.DefTypeValue" type="text" name="defTypeValue" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="System_DataDefinitionType_DefTypeCode">@L("DefTypeCode")</label>
+                <input class="form-control" id="System_DataDefinitionType_DefTypeCode" value="@Model.System_DataDefinitionType.DefTypeCode" type="text" name="defTypeCode" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="System_DataDefinitionType_DefTypeParentId">@L("DefTypeParentId")</label>
+                <input class="form-control m-input" id="System_DataDefinitionType_DefTypeParentId" value="@Model.System_DataDefinitionType.DefTypeParentId.ToString(CultureInfo.InvariantCulture)" type="number" name="defTypeParentId" />
+            </div>
+
+        </form>
+    </div>
+</div>
+
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalFooterWithSaveAndCancel.cshtml")

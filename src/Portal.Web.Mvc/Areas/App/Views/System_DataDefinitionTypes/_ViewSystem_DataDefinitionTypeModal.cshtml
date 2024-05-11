@@ -1,0 +1,30 @@
+﻿
+@using Portal.Web.Areas.App.Models.Common.Modals
+@using Portal.Web.Areas.App.Models.System_DataDefinitionTypes
+@model System_DataDefinitionTypeViewModel
+
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("Details")))
+
+<div class="modal-body">
+    <div id="System_DataDefinitionTypeInformationsTab">
+
+        <div class="row">
+            <div class="col-6 mb-3">
+                <h6>@L("DefTypeValue") :</h6>
+                @Model.System_DataDefinitionType.DefTypeValue
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("DefTypeCode") :</h6>
+                @Model.System_DataDefinitionType.DefTypeCode
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("DefTypeParentId") :</h6>
+                @Model.System_DataDefinitionType.DefTypeParentId
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalFooterWithClose.cshtml")

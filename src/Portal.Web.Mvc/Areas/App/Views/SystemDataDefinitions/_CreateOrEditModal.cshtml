@@ -1,0 +1,42 @@
+﻿
+@using System.Globalization
+@using Portal.Web.Areas.App.Models.Common.Modals
+@using Portal.Web.Areas.App.Models.SystemDataDefinitions
+@model CreateOrEditSystemDataDefinitionModalViewModel
+@using Abp.Extensions
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(Model.IsEditMode ? (L("EditSystemDataDefinition")) : L("CreateNewSystemDataDefinition")))
+
+<div class="modal-body">
+    <div id="SystemDataDefinitionInformationsTab">
+        <form name="SystemDataDefinitionInformationsForm" role="form" novalidate class="form-validation">
+
+            @if (Model.IsEditMode)
+            {
+            <input type="hidden" name="id" value="@Model.SystemDataDefinition.Id" />
+            }
+
+            <div class="my-3">
+                <label class="form-label" for="SystemDataDefinition_DefTypeId">@L("DefTypeId")</label>
+                <input class="form-control m-input" id="SystemDataDefinition_DefTypeId" value="@Model.SystemDataDefinition.DefTypeId.ToString(CultureInfo.InvariantCulture)" type="number" name="defTypeId" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="SystemDataDefinition_DefValue">@L("DefValue")</label>
+                <input class="form-control" id="SystemDataDefinition_DefValue" value="@Model.SystemDataDefinition.DefValue" type="text" name="defValue" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="SystemDataDefinition_DefParentId">@L("DefParentId")</label>
+                <input class="form-control m-input" id="SystemDataDefinition_DefParentId" value="@Model.SystemDataDefinition.DefParentId.ToString(CultureInfo.InvariantCulture)" type="number" name="defParentId" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="SystemDataDefinition_EntityId">@L("EntityId")</label>
+                <input class="form-control m-input" id="SystemDataDefinition_EntityId" value="@Model.SystemDataDefinition.EntityId.ToString(CultureInfo.InvariantCulture)" type="number" name="entityId" />
+            </div>
+
+        </form>
+    </div>
+</div>
+
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalFooterWithSaveAndCancel.cshtml")

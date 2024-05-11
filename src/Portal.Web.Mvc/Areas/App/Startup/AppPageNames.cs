@@ -4,6 +4,8 @@
     {
         public static class Common
         {
+            public const string SystemDataDefinitions = "System_DataDefinition.SystemDataDefinitions";
+            public const string System_DataDefinitionTypes = "SystemDataDefinitionType.System_DataDefinitionTypes";
             public const string OrderItems = "OrderItemNamespeace.OrderItems";
             public const string Orders = "OrderNamespeace.Orders";
             public const string Products = "ProductNamespeace.Products";

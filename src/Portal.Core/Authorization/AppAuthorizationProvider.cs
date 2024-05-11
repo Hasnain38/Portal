@@ -30,6 +30,16 @@ namespace Portal.Authorization
 
             var pages = context.GetPermissionOrNull(AppPermissions.Pages) ?? context.CreatePermission(AppPermissions.Pages, L("Pages"));
 
+            var systemDataDefinitions = pages.CreateChildPermission(AppPermissions.Pages_SystemDataDefinitions, L("SystemDataDefinitions"));
+            systemDataDefinitions.CreateChildPermission(AppPermissions.Pages_SystemDataDefinitions_Create, L("CreateNewSystemDataDefinition"));
+            systemDataDefinitions.CreateChildPermission(AppPermissions.Pages_SystemDataDefinitions_Edit, L("EditSystemDataDefinition"));
+            systemDataDefinitions.CreateChildPermission(AppPermissions.Pages_SystemDataDefinitions_Delete, L("DeleteSystemDataDefinition"));
+
+            var system_DataDefinitionTypes = pages.CreateChildPermission(AppPermissions.Pages_System_DataDefinitionTypes, L("System_DataDefinitionTypes"));
+            system_DataDefinitionTypes.CreateChildPermission(AppPermissions.Pages_System_DataDefinitionTypes_Create, L("CreateNewSystem_DataDefinitionType"));
+            system_DataDefinitionTypes.CreateChildPermission(AppPermissions.Pages_System_DataDefinitionTypes_Edit, L("EditSystem_DataDefinitionType"));
+            system_DataDefinitionTypes.CreateChildPermission(AppPermissions.Pages_System_DataDefinitionTypes_Delete, L("DeleteSystem_DataDefinitionType"));
+
             var orderItems = pages.CreateChildPermission(AppPermissions.Pages_OrderItems, L("OrderItems"));
             orderItems.CreateChildPermission(AppPermissions.Pages_OrderItems_Create, L("CreateNewOrderItem"));
             orderItems.CreateChildPermission(AppPermissions.Pages_OrderItems_Edit, L("EditOrderItem"));

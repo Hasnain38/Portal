@@ -1,4 +1,8 @@
-﻿using Portal.OrderItemNamespeace.Dtos;
+﻿using Portal.System_DataDefinition.Dtos;
+using Portal.System_DataDefinition;
+using Portal.SystemDataDefinitionType.Dtos;
+using Portal.SystemDataDefinitionType;
+using Portal.OrderItemNamespeace.Dtos;
 using Portal.OrderItemNamespeace;
 using Portal.OrderNamespeace.Dtos;
 using Portal.OrderNamespeace;
@@ -57,6 +61,10 @@ namespace Portal
     {
         public static void CreateMappings(IMapperConfigurationExpression configuration)
         {
+            configuration.CreateMap<CreateOrEditSystemDataDefinitionDto, SystemDataDefinition>().ReverseMap();
+            configuration.CreateMap<SystemDataDefinitionDto, SystemDataDefinition>().ReverseMap();
+            configuration.CreateMap<CreateOrEditSystem_DataDefinitionTypeDto, System_DataDefinitionType>().ReverseMap();
+            configuration.CreateMap<System_DataDefinitionTypeDto, System_DataDefinitionType>().ReverseMap();
             configuration.CreateMap<CreateOrEditOrderItemDto, OrderItem>().ReverseMap();
             configuration.CreateMap<OrderItemDto, OrderItem>().ReverseMap();
             configuration.CreateMap<CreateOrEditOrderDto, Order>().ReverseMap();

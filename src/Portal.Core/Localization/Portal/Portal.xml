@@ -1,6 +1,40 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <localizationDictionary culture="en">
-  <texts>    <text name="ProductId">Product id</text>
+  <texts>    <text name="System_DataDefinition">System _ data definition</text>
+    <text name="SystemDataDefinition">System data definition</text>
+    <text name="Portal.System_DataDefinition.SystemDataDefinition">SystemDataDefinition</text>
+    <text name="DefTypeId">Def type id</text>
+    <text name="DefValue">Def value</text>
+    <text name="DefParentId">Def parent id</text>
+    <text name="SystemDataDefinitionsHeaderInfo">System data definitions header info</text>
+    <text name="CreateNewSystemDataDefinition">Create new system data definition</text>
+    <text name="EditSystemDataDefinition">Edit system data definition</text>
+    <text name="DeleteSystemDataDefinition">Delete system data definition</text>
+    <text name="SystemDataDefinitions">System data definitions</text>
+    <text name="FileCantBeConvertedToSystemDataDefinitionList">SystemDataDefinition import process has failed. File is invalid.</text>
+    <text name="AllSystemDataDefinitionsSuccessfullyImportedFromExcel">SystemDataDefinition import process has been completed successfully. All systemdatadefinitions in file are imported.</text>
+    <text name="ImportSystemDataDefinitionsProcessStart">SystemDataDefinition import process has begun.</text>
+    <text name="ImportSystemDataDefinitionsProcessFailed">SystemDataDefinition import process has failed.</text>
+    <text name="InvalidSystemDataDefinitionImports">Invalid systemdatadefinition imports</text>
+    <text name="ClickToSeeInvalidSystemDataDefinitions">SystemDataDefinition import process has been completed. There are some invalid data. Click to see Invalid systemdatadefinition imports.</text>
+    <text name="SystemDataDefinitionType">System data definition type</text>
+    <text name="System_DataDefinitionType">System _ data definition type</text>
+    <text name="Portal.SystemDataDefinitionType.System_DataDefinitionType">System_DataDefinitionType</text>
+    <text name="DefTypeValue">Def type value</text>
+    <text name="DefTypeCode">Def type code</text>
+    <text name="DefTypeParentId">Def type parent id</text>
+    <text name="System_DataDefinitionTypesHeaderInfo">System _ data definition types header info</text>
+    <text name="CreateNewSystem_DataDefinitionType">Create new system _ data definition type</text>
+    <text name="EditSystem_DataDefinitionType">Edit system _ data definition type</text>
+    <text name="DeleteSystem_DataDefinitionType">Delete system _ data definition type</text>
+    <text name="System_DataDefinitionTypes">System _ data definition types</text>
+    <text name="FileCantBeConvertedToSystem_DataDefinitionTypeList">System_DataDefinitionType import process has failed. File is invalid.</text>
+    <text name="AllSystem_DataDefinitionTypesSuccessfullyImportedFromExcel">System_DataDefinitionType import process has been completed successfully. All system_datadefinitiontypes in file are imported.</text>
+    <text name="ImportSystem_DataDefinitionTypesProcessStart">System_DataDefinitionType import process has begun.</text>
+    <text name="ImportSystem_DataDefinitionTypesProcessFailed">System_DataDefinitionType import process has failed.</text>
+    <text name="InvalidSystem_DataDefinitionTypeImports">Invalid system_datadefinitiontype imports</text>
+    <text name="ClickToSeeInvalidSystem_DataDefinitionTypes">System_DataDefinitionType import process has been completed. There are some invalid data. Click to see Invalid system_datadefinitiontype imports.</text>
+    <text name="ProductId">Product id</text>
     <text name="Quantity">Quantity</text>
     <text name="UnitPriceInclTax">Unit price incl tax</text>
     <text name="UnitPriceExclTax">Unit price excl tax</text>

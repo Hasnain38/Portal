@@ -1,4 +1,6 @@
-﻿using Portal.OrderItemNamespeace;
+﻿using Portal.System_DataDefinition;
+using Portal.SystemDataDefinitionType;
+using Portal.OrderItemNamespeace;
 using Portal.OrderNamespeace;
 using Portal.ProductNamespeace;
 using Portal.TestEntityNamespeace;
@@ -26,6 +28,10 @@ namespace Portal.EntityFrameworkCore
 {
     public class PortalDbContext : AbpZeroDbContext<Tenant, Role, User, PortalDbContext>, IOpenIddictDbContext
     {
+        public virtual DbSet<SystemDataDefinition> SystemDataDefinitions { get; set; }
+
+        public virtual DbSet<System_DataDefinitionType> System_DataDefinitionTypes { get; set; }
+
         public virtual DbSet<OrderItem> OrderItems { get; set; }
 
         public virtual DbSet<Order> Orders { get; set; }

@@ -23,6 +23,22 @@ namespace Portal.Web.Areas.App.Startup
                     )
                 )
                 .AddItem(new MenuItemDefinition(
+                        AppPageNames.Common.SystemDataDefinitions,
+                        L("SystemDataDefinitions"),
+                        url: "App/SystemDataDefinitions",
+                        icon: "flaticon-more",
+                        permissionDependency: new SimplePermissionDependency(AppPermissions.Pages_SystemDataDefinitions)
+                    )
+                )
+                .AddItem(new MenuItemDefinition(
+                        AppPageNames.Common.System_DataDefinitionTypes,
+                        L("System_DataDefinitionTypes"),
+                        url: "App/System_DataDefinitionTypes",
+                        icon: "flaticon-more",
+                        permissionDependency: new SimplePermissionDependency(AppPermissions.Pages_System_DataDefinitionTypes)
+                    )
+                )
+                .AddItem(new MenuItemDefinition(
                         AppPageNames.Common.OrderItems,
                         L("OrderItems"),
                         url: "App/OrderItems",
