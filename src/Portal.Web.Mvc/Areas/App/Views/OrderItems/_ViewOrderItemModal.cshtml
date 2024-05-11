@@ -1,0 +1,50 @@
+﻿
+@using Portal.Web.Areas.App.Models.Common.Modals
+@using Portal.Web.Areas.App.Models.OrderItems
+@model OrderItemViewModel
+
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("Details")))
+
+<div class="modal-body">
+    <div id="OrderItemInformationsTab">
+
+        <div class="row">
+            <div class="col-6 mb-3">
+                <h6>@L("OrderId") :</h6>
+                @Model.OrderItem.OrderId
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("ProductId") :</h6>
+                @Model.OrderItem.ProductId
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("Quantity") :</h6>
+                @Model.OrderItem.Quantity
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("UnitPriceInclTax") :</h6>
+                @Model.OrderItem.UnitPriceInclTax
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("UnitPriceExclTax") :</h6>
+                @Model.OrderItem.UnitPriceExclTax
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("ItemWeight") :</h6>
+                @Model.OrderItem.ItemWeight
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("CreatedOnUtc") :</h6>
+                @Model.OrderItem.CreatedOnUtc
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("UpdatedOnUtc") :</h6>
+                @Model.OrderItem.UpdatedOnUtc
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalFooterWithClose.cshtml")

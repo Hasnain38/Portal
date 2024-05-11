@@ -1,0 +1,94 @@
+﻿
+@using Portal.Web.Areas.App.Models.Common.Modals
+@using Portal.Web.Areas.App.Models.Orders
+@model OrderViewModel
+
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("Details")))
+
+<div class="modal-body">
+    <div id="OrderInformationsTab">
+
+        <div class="row">
+            <div class="col-6 mb-3">
+                <h6>@L("OrderGuid") :</h6>
+                @Model.Order.OrderGuid
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("StoreId") :</h6>
+                @Model.Order.StoreId
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("CustomerId") :</h6>
+                @Model.Order.CustomerId
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("BillingAddressId") :</h6>
+                @Model.Order.BillingAddressId
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("ShippingAddressId") :</h6>
+                @Model.Order.ShippingAddressId
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("PickupAddressId") :</h6>
+                @Model.Order.PickupAddressId
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("PickupInStore") :</h6>
+                @Model.Order.PickupInStore
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("OrderStatusId") :</h6>
+                @L("Enum_OrderStatus_" + (int)Model.Order.OrderStatusId)
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("ShippingStatusId") :</h6>
+                @L("Enum_ShippingStatus_" + (int)Model.Order.ShippingStatusId)
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("PaymentStatusId") :</h6>
+                @L("Enum_PaymentStatus_" + (int)Model.Order.PaymentStatusId)
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("OrderTax") :</h6>
+                @Model.Order.OrderTax
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("OrderDiscount") :</h6>
+                @Model.Order.OrderDiscount
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("OrderTotal") :</h6>
+                @Model.Order.OrderTotal
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("CreatedOnUtc") :</h6>
+                @Model.Order.CreatedOnUtc
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("UpdatedOnUtc") :</h6>
+                @Model.Order.UpdatedOnUtc
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("CardTypeId") :</h6>
+                @L("Enum_CardType_" + (int)Model.Order.CardTypeId)
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("CardName") :</h6>
+                @Model.Order.CardName
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("CardNumber") :</h6>
+                @Model.Order.CardNumber
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("Deleted") :</h6>
+                @Model.Order.Deleted
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalFooterWithClose.cshtml")

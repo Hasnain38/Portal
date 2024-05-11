@@ -1,0 +1,145 @@
+﻿@using Portal.GeneralEnums;
+@using Portal.GeneralEnums;
+@using Portal.GeneralEnums;
+@using Portal.GeneralEnums;
+
+@using System.Globalization
+@using Portal.Web.Areas.App.Models.Common.Modals
+@using Portal.Web.Areas.App.Models.Orders
+@model CreateOrEditOrderModalViewModel
+@using Abp.Extensions
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(Model.IsEditMode ? (L("EditOrder")) : L("CreateNewOrder")))
+
+<div class="modal-body">
+    <div id="OrderInformationsTab">
+        <form name="OrderInformationsForm" role="form" novalidate class="form-validation">
+
+            @if (Model.IsEditMode)
+            {
+            <input type="hidden" name="id" value="@Model.Order.Id" />
+            }
+
+            <div class="my-3">
+                <label class="form-label" for="Order_OrderGuid">@L("OrderGuid")</label>
+                <input class="form-control" id="Order_OrderGuid" value="@Model.Order.OrderGuid" type="text" name="orderGuid" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="Order_StoreId">@L("StoreId")</label>
+                <input class="form-control m-input" id="Order_StoreId" value="@Model.Order.StoreId.ToString(CultureInfo.InvariantCulture)" type="number" name="storeId" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="Order_CustomerId">@L("CustomerId")</label>
+                <input class="form-control m-input" id="Order_CustomerId" value="@Model.Order.CustomerId.ToString(CultureInfo.InvariantCulture)" type="number" name="customerId" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="Order_BillingAddressId">@L("BillingAddressId")</label>
+                <input class="form-control m-input" id="Order_BillingAddressId" value="@Model.Order.BillingAddressId.ToString(CultureInfo.InvariantCulture)" type="number" name="billingAddressId" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="Order_ShippingAddressId">@L("ShippingAddressId")</label>
+                <input class="form-control m-input" id="Order_ShippingAddressId" value="@Model.Order.ShippingAddressId.ToString(CultureInfo.InvariantCulture)" type="number" name="shippingAddressId" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="Order_PickupAddressId">@L("PickupAddressId")</label>
+                <input class="form-control m-input" id="Order_PickupAddressId" value="@Model.Order.PickupAddressId.ToString(CultureInfo.InvariantCulture)" type="number" name="pickupAddressId" />
+            </div>
+
+            <label class="form-check form-check-custom">
+                <input id="Order_PickupInStore" name="pickupInStore" type="checkbox" class="form-check-input" value="true" @Html.Raw(Model.Order.PickupInStore ?"checked=\"checked\"":"") />
+                <span class="form-check-label">
+                    @L("PickupInStore")
+                </span>
+            </label>
+
+            @{
+            var selectListOrderStatusId = Html.GetEnumSelectList(typeof(OrderStatus));
+            foreach (var selectOption in selectListOrderStatusId) { selectOption.Text = L("Enum_OrderStatus_" + selectOption.Value); }
+            }
+            <div class="my-3">
+                <label class="form-label" for="Order_OrderStatusId">@L("OrderStatusId")</label>
+                <select class="form-select m-input m-input--square" name="orderStatusId" id="Order_OrderStatusId" asp-for="@Model.Order.OrderStatusId" asp-items="@selectListOrderStatusId">
+                </select>
+            </div>
+
+            @{
+            var selectListShippingStatusId = Html.GetEnumSelectList(typeof(ShippingStatus));
+            foreach (var selectOption in selectListShippingStatusId) { selectOption.Text = L("Enum_ShippingStatus_" + selectOption.Value); }
+            }
+            <div class="my-3">
+                <label class="form-label" for="Order_ShippingStatusId">@L("ShippingStatusId")</label>
+                <select class="form-select m-input m-input--square" name="shippingStatusId" id="Order_ShippingStatusId" asp-for="@Model.Order.ShippingStatusId" asp-items="@selectListShippingStatusId">
+                </select>
+            </div>
+
+            @{
+            var selectListPaymentStatusId = Html.GetEnumSelectList(typeof(PaymentStatus));
+            foreach (var selectOption in selectListPaymentStatusId) { selectOption.Text = L("Enum_PaymentStatus_" + selectOption.Value); }
+            }
+            <div class="my-3">
+                <label class="form-label" for="Order_PaymentStatusId">@L("PaymentStatusId")</label>
+                <select class="form-select m-input m-input--square" name="paymentStatusId" id="Order_PaymentStatusId" asp-for="@Model.Order.PaymentStatusId" asp-items="@selectListPaymentStatusId">
+                </select>
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="Order_OrderTax">@L("OrderTax")</label>
+                <input class="form-control m-input" id="Order_OrderTax" value="@Model.Order.OrderTax.ToString(CultureInfo.InvariantCulture)" type="number" name="orderTax" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="Order_OrderDiscount">@L("OrderDiscount")</label>
+                <input class="form-control m-input" id="Order_OrderDiscount" value="@Model.Order.OrderDiscount.ToString(CultureInfo.InvariantCulture)" type="number" name="orderDiscount" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="Order_OrderTotal">@L("OrderTotal")</label>
+                <input class="form-control m-input" id="Order_OrderTotal" value="@Model.Order.OrderTotal.ToString(CultureInfo.InvariantCulture)" type="number" name="orderTotal" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="Order_CreatedOnUtc">@L("CreatedOnUtc")</label>
+                <input class="form-control m-input date-picker" id="Order_CreatedOnUtc" type="text" name="createdOnUtc" value="@Model.Order.CreatedOnUtc" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="Order_UpdatedOnUtc">@L("UpdatedOnUtc")</label>
+                <input class="form-control m-input date-picker" id="Order_UpdatedOnUtc" type="text" name="updatedOnUtc" value="@Model.Order.UpdatedOnUtc" />
+            </div>
+
+            @{
+            var selectListCardTypeId = Html.GetEnumSelectList(typeof(CardType));
+            foreach (var selectOption in selectListCardTypeId) { selectOption.Text = L("Enum_CardType_" + selectOption.Value); }
+            }
+            <div class="my-3">
+                <label class="form-label" for="Order_CardTypeId">@L("CardTypeId")</label>
+                <select class="form-select m-input m-input--square" name="cardTypeId" id="Order_CardTypeId" asp-for="@Model.Order.CardTypeId" asp-items="@selectListCardTypeId">
+                </select>
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="Order_CardName">@L("CardName")</label>
+                <input class="form-control" id="Order_CardName" value="@Model.Order.CardName" type="text" name="cardName" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="Order_CardNumber">@L("CardNumber")</label>
+                <input class="form-control" id="Order_CardNumber" value="@Model.Order.CardNumber" type="text" name="cardNumber" />
+            </div>
+
+            <label class="form-check form-check-custom">
+                <input id="Order_Deleted" name="deleted" type="checkbox" class="form-check-input" value="true" @Html.Raw(Model.Order.Deleted ?"checked=\"checked\"":"") />
+                <span class="form-check-label">
+                    @L("Deleted")
+                </span>
+            </label>
+
+        </form>
+    </div>
+</div>
+
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalFooterWithSaveAndCancel.cshtml")

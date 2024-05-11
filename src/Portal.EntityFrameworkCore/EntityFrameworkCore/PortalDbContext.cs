@@ -1,4 +1,6 @@
-﻿using Portal.ProductNamespeace;
+﻿using Portal.OrderItemNamespeace;
+using Portal.OrderNamespeace;
+using Portal.ProductNamespeace;
 using Portal.TestEntityNamespeace;
 using System.Collections.Generic;
 using System.Text.Json;
@@ -24,6 +26,10 @@ namespace Portal.EntityFrameworkCore
 {
     public class PortalDbContext : AbpZeroDbContext<Tenant, Role, User, PortalDbContext>, IOpenIddictDbContext
     {
+        public virtual DbSet<OrderItem> OrderItems { get; set; }
+
+        public virtual DbSet<Order> Orders { get; set; }
+
         public virtual DbSet<Product> Products { get; set; }
 
         public virtual DbSet<TestEntity> TestEntities { get; set; }

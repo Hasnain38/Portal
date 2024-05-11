@@ -30,6 +30,16 @@ namespace Portal.Authorization
 
             var pages = context.GetPermissionOrNull(AppPermissions.Pages) ?? context.CreatePermission(AppPermissions.Pages, L("Pages"));
 
+            var orderItems = pages.CreateChildPermission(AppPermissions.Pages_OrderItems, L("OrderItems"));
+            orderItems.CreateChildPermission(AppPermissions.Pages_OrderItems_Create, L("CreateNewOrderItem"));
+            orderItems.CreateChildPermission(AppPermissions.Pages_OrderItems_Edit, L("EditOrderItem"));
+            orderItems.CreateChildPermission(AppPermissions.Pages_OrderItems_Delete, L("DeleteOrderItem"));
+
+            var orders = pages.CreateChildPermission(AppPermissions.Pages_Orders, L("Orders"));
+            orders.CreateChildPermission(AppPermissions.Pages_Orders_Create, L("CreateNewOrder"));
+            orders.CreateChildPermission(AppPermissions.Pages_Orders_Edit, L("EditOrder"));
+            orders.CreateChildPermission(AppPermissions.Pages_Orders_Delete, L("DeleteOrder"));
+
             var products = pages.CreateChildPermission(AppPermissions.Pages_Products, L("Products"));
             products.CreateChildPermission(AppPermissions.Pages_Products_Create, L("CreateNewProduct"));
             products.CreateChildPermission(AppPermissions.Pages_Products_Edit, L("EditProduct"));

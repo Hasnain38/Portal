@@ -1,4 +1,8 @@
-﻿using Portal.ProductNamespeace.Dtos;
+﻿using Portal.OrderItemNamespeace.Dtos;
+using Portal.OrderItemNamespeace;
+using Portal.OrderNamespeace.Dtos;
+using Portal.OrderNamespeace;
+using Portal.ProductNamespeace.Dtos;
 using Portal.ProductNamespeace;
 using Portal.TestEntityNamespeace.Dtos;
 using Portal.TestEntityNamespeace;
@@ -53,6 +57,10 @@ namespace Portal
     {
         public static void CreateMappings(IMapperConfigurationExpression configuration)
         {
+            configuration.CreateMap<CreateOrEditOrderItemDto, OrderItem>().ReverseMap();
+            configuration.CreateMap<OrderItemDto, OrderItem>().ReverseMap();
+            configuration.CreateMap<CreateOrEditOrderDto, Order>().ReverseMap();
+            configuration.CreateMap<OrderDto, Order>().ReverseMap();
             configuration.CreateMap<CreateOrEditProductDto, Product>().ReverseMap();
             configuration.CreateMap<ProductDto, Product>().ReverseMap();
             configuration.CreateMap<CreateOrEditTestEntityDto, TestEntity>().ReverseMap();

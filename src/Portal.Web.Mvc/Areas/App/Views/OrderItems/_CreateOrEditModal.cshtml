@@ -1,0 +1,62 @@
+﻿
+@using System.Globalization
+@using Portal.Web.Areas.App.Models.Common.Modals
+@using Portal.Web.Areas.App.Models.OrderItems
+@model CreateOrEditOrderItemModalViewModel
+@using Abp.Extensions
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(Model.IsEditMode ? (L("EditOrderItem")) : L("CreateNewOrderItem")))
+
+<div class="modal-body">
+    <div id="OrderItemInformationsTab">
+        <form name="OrderItemInformationsForm" role="form" novalidate class="form-validation">
+
+            @if (Model.IsEditMode)
+            {
+            <input type="hidden" name="id" value="@Model.OrderItem.Id" />
+            }
+
+            <div class="my-3">
+                <label class="form-label" for="OrderItem_OrderId">@L("OrderId")</label>
+                <input class="form-control m-input" id="OrderItem_OrderId" value="@Model.OrderItem.OrderId.ToString(CultureInfo.InvariantCulture)" type="number" name="orderId" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="OrderItem_ProductId">@L("ProductId")</label>
+                <input class="form-control m-input" id="OrderItem_ProductId" value="@Model.OrderItem.ProductId.ToString(CultureInfo.InvariantCulture)" type="number" name="productId" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="OrderItem_Quantity">@L("Quantity")</label>
+                <input class="form-control m-input" id="OrderItem_Quantity" value="@Model.OrderItem.Quantity.ToString(CultureInfo.InvariantCulture)" type="number" name="quantity" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="OrderItem_UnitPriceInclTax">@L("UnitPriceInclTax")</label>
+                <input class="form-control m-input" id="OrderItem_UnitPriceInclTax" value="@Model.OrderItem.UnitPriceInclTax.ToString(CultureInfo.InvariantCulture)" type="number" name="unitPriceInclTax" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="OrderItem_UnitPriceExclTax">@L("UnitPriceExclTax")</label>
+                <input class="form-control m-input" id="OrderItem_UnitPriceExclTax" value="@Model.OrderItem.UnitPriceExclTax.ToString(CultureInfo.InvariantCulture)" type="number" name="unitPriceExclTax" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="OrderItem_ItemWeight">@L("ItemWeight")</label>
+                <input class="form-control m-input" id="OrderItem_ItemWeight" value="@Model.OrderItem.ItemWeight.ToString(CultureInfo.InvariantCulture)" type="number" name="itemWeight" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="OrderItem_CreatedOnUtc">@L("CreatedOnUtc")</label>
+                <input class="form-control m-input date-picker" id="OrderItem_CreatedOnUtc" type="text" name="createdOnUtc" value="@Model.OrderItem.CreatedOnUtc" />
+            </div>
+
+            <div class="my-3">
+                <label class="form-label" for="OrderItem_UpdatedOnUtc">@L("UpdatedOnUtc")</label>
+                <input class="form-control m-input date-picker" id="OrderItem_UpdatedOnUtc" type="text" name="updatedOnUtc" value="@Model.OrderItem.UpdatedOnUtc" />
+            </div>
+
+        </form>
+    </div>
+</div>
+
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalFooterWithSaveAndCancel.cshtml")
